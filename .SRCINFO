@@ -1,0 +1,54 @@
+pkgbase = quassel-qt
+	pkgdesc = Next-generation distributed IRC client
+	pkgver = 0.12.2
+	pkgrel = 1
+	url = http://quassel-irc.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt5-base
+	makedepends = qt5-tools
+	makedepends = qca-qt5
+	makedepends = qt5-script
+	source = http://quassel-irc.org/pub/quassel-0.12.2.tar.bz2
+	source = quassel.service
+	source = quassel.conf
+	source = fix_qt5.5_build.patch
+	source = fix_ssl_check.patch
+	sha256sums = 6bd6f79ecb88fb857bea7e89c767a3bd0f413ff01bae9298dd2e563478947897
+	sha256sums = 5dbe20290f3361b9b7a74a52905137e76b656976febf2d31082a2276f9dcde7f
+	sha256sums = f3031ea8217e01ba42cea14606169e3e27affa5918968ffd5a03c21ae92fe2b8
+	sha256sums = a92914a26fe3f6601da7cfd26fb6a6fe6a0ba6c0bd91ac9416765974127365f6
+	sha256sums = c62f50511322c6cd27b10b4c3d92d0c04262454467b95f1a84064f784c47ba7b
+
+pkgname = quassel-qt-client
+	pkgdesc = Next-generation distributed IRC client - client only
+	install = quassel-client.install
+	depends = qt5-base
+	depends = qt5-webkit
+	conflicts = quassel-monolithic
+	conflicts = quassel-qt-monolithic
+	conflicts = quassel-client
+
+pkgname = quassel-qt-core
+	pkgdesc = Next-generation distributed IRC client - core only
+	install = quassel.install
+	depends = icu
+	depends = qca-qt5
+	depends = qt5-script
+	conflicts = quassel-core
+	backup = etc/conf.d/quassel
+
+pkgname = quassel-qt-monolithic
+	pkgdesc = Next-generation distributed IRC client - monolithic
+	install = quassel-monolithic.install
+	depends = qt5-base
+	depends = qca-qt5
+	depends = qt5-webkit
+	depends = qt5-script
+	conflicts = quassel-client
+	conflicts = quassel-qt-client
+	conflicts = quassel-monolithic
+
