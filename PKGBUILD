@@ -6,7 +6,7 @@ _pkgbase=quassel
 pkgbase=quassel-qt
 pkgname=('quassel-qt-client' 'quassel-qt-core' 'quassel-qt-monolithic')
 pkgver=0.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Next-generation distributed IRC client"
 arch=('i686' 'x86_64')
 url="http://quassel-irc.org/"
@@ -86,11 +86,11 @@ build() {
 }
 
 package_quassel-qt-core() {
-pkgdesc="Next-generation distributed IRC client - core only"
-depends=('icu' 'qca-qt5' 'qt5-script')
-conflicts=('quassel-core')
-backup=(etc/conf.d/quassel)
-install=quassel.install
+  pkgdesc="Next-generation distributed IRC client - core only"
+  depends=('icu' 'qca-qt5' 'qt5-script')
+  conflicts=('quassel-core')
+  install='quassel.install'
+  backup=(etc/conf.d/quassel)
   cd "${srcdir}"/build
 
   make DESTDIR="${pkgdir}" install
@@ -105,20 +105,18 @@ install=quassel.install
 }
 
 package_quassel-qt-client() {
-pkgdesc="Next-generation distributed IRC client - client only"
-depends=('qt5-base' 'qt5-webkit')
-conflicts=('quassel-monolithic' 'quassel-qt-monolithic' 'quassel-client')
-install=quassel-client.install
+  pkgdesc="Next-generation distributed IRC client - client only"
+  depends=('qt5-base' 'qt5-webkit' 'desktop-file-utils' 'hicolor-icon-theme')
+  conflicts=('quassel-monolithic' 'quassel-qt-monolithic' 'quassel-client')
   cd "${srcdir}"/build-client
 
   make DESTDIR="${pkgdir}" install
 }
 
 package_quassel-qt-monolithic() {
-pkgdesc="Next-generation distributed IRC client - monolithic"
-depends=('qt5-base' 'qca-qt5' 'qt5-webkit' 'qt5-script')
-conflicts=('quassel-client' 'quassel-qt-client' 'quassel-monolithic')
-install=quassel-monolithic.install
+  pkgdesc="Next-generation distributed IRC client - monolithic"
+  depends=('qt5-base' 'qca-qt5' 'qt5-webkit' 'qt5-script' 'desktop-file-utils' 'hicolor-icon-theme')
+  conflicts=('quassel-client' 'quassel-qt-client' 'quassel-monolithic')
   cd "${srcdir}"/build-mono
 
   make DESTDIR="${pkgdir}" install
