@@ -5,8 +5,8 @@
 _pkgbase=quassel
 pkgbase=quassel-qt
 pkgname=('quassel-qt-client' 'quassel-qt-core' 'quassel-qt-monolithic')
-pkgver=0.12.2
-pkgrel=2
+pkgver=0.12.4
+pkgrel=1
 pkgdesc="Next-generation distributed IRC client"
 arch=('i686' 'x86_64')
 url="http://quassel-irc.org/"
@@ -14,20 +14,14 @@ license=('GPL')
 makedepends=('cmake' 'extra-cmake-modules' 'qt5-base' 'qt5-tools' 'qca-qt5' 'qt5-script')
 source=(http://quassel-irc.org/pub/$_pkgbase-$pkgver.tar.bz2
         $_pkgbase.service
-        $_pkgbase.conf
-        fix_qt5.5_build.patch
-        fix_ssl_check.patch)
-sha256sums=('6bd6f79ecb88fb857bea7e89c767a3bd0f413ff01bae9298dd2e563478947897'
+        $_pkgbase.conf)
+sha256sums=('93e4e54cb3743cbe2e5684c2fcba94fd2bc2cd739f7672dee14341b49c29444d'
             '5dbe20290f3361b9b7a74a52905137e76b656976febf2d31082a2276f9dcde7f'
-            'f3031ea8217e01ba42cea14606169e3e27affa5918968ffd5a03c21ae92fe2b8'
-            'a92914a26fe3f6601da7cfd26fb6a6fe6a0ba6c0bd91ac9416765974127365f6'
-            'c62f50511322c6cd27b10b4c3d92d0c04262454467b95f1a84064f784c47ba7b')
+            'f3031ea8217e01ba42cea14606169e3e27affa5918968ffd5a03c21ae92fe2b8')
 
-prepare() {
-    cd "$_pkgbase-$pkgver"
-    patch -p1 -i "$srcdir/fix_qt5.5_build.patch"
-    patch -p1 -i "$srcdir/fix_ssl_check.patch"
-}
+#prepare() {
+    #cd "$_pkgbase-$pkgver"
+#}
 
 build() {
   cd "${srcdir}"
