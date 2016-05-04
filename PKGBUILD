@@ -6,7 +6,7 @@ _pkgbase=quassel
 pkgbase=quassel-qt
 pkgname=('quassel-qt-client' 'quassel-qt-core' 'quassel-qt-monolithic')
 pkgver=0.12.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Next-generation distributed IRC client"
 arch=('i686' 'x86_64')
 url="http://quassel-irc.org/"
@@ -35,7 +35,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr/ \
     -DWITH_KDE=OFF \
     -DUSE_QT5=ON \
-    -DWITH_OPENSSL=ON \
+    -DHAVE_SSL=TRUE \
     -DWANT_CORE=ON \
     -DWANT_MONO=OFF \
     -DWANT_QTCLIENT=OFF \
@@ -54,7 +54,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr/ \
     -DUSE_QT5=ON \
     -DWITH_KDE=OFF \
-    -DWITH_OPENSSL=ON \
+    -DHAVE_SSL=TRUE \
     -DWANT_CORE=OFF \
     -DWANT_QTCLIENT=ON \
     -DWANT_MONO=OFF \
@@ -69,7 +69,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr/ \
     -DUSE_QT5=ON \
     -DWITH_KDE=OFF \
-    -DWITH_OPENSSL=ON \
+    -DHAVE_SSL=TRUE \
     -DWANT_CORE=OFF \
     -DWANT_QTCLIENT=OFF \
     -DWANT_MONO=ON \
